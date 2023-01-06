@@ -1,0 +1,2966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACT FIREBASE WEBSITE</title>
+</head>
+<body>
+    <center>
+        <h1><b>REACT FIREBASE WEBSITE</b></h1>
+    </center>
+
+    we are going to create a complete multipage website with the help of react, firebase and we will host that in firebase(for data base and hosting)
+
+    step1)creating a responsive navbar with the help of react
+    installing react app:
+    npx create-react-app portfolio 
+    cd portfolio 
+    npm start 
+
+    now we have to clear all unwanter files in src folder 
+    we are going to use bootstrap 5 for that we will use cdn link and paste in index.html 
+
+    now create a navbar.js in component folder in src folder and import it in App.js
+    now from bootstrap navbar cdn we have to copy that navbar and paste it 
+    <!--
+import React from 'react'
+
+const Navbar = () => {
+  return (
+    <>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"/></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+    </nav>
+    
+    </>
+  )
+}
+
+export default Navbar
+    -->
+
+    now since we have to create our page like adding home,about,service ,ccontact etc 
+    <!--
+        import React from 'react'
+
+const Navbar = () => {
+  return (
+    <>
+    <section className="navbar-bg">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Shubhaam.com</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Service</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button class="btn btn-outline-success" type="submit">LogIn</button>
+                    <button class="btn btn-outline-success" type="submit">SignUp</button>
+                </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+    </>
+  )
+}
+
+export default Navbar
+    -->
+
+    now we have to make navbar responsive with the help of onClick ie react hook 
+    <!--
+        import React, { useState } from 'react'
+
+const Navbar = () => {
+
+    const [show,setShow] = useState(false)
+
+  return (
+    <>
+    <section className="navbar-bg">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Shubhaam.com</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class={`collapse navbar-collapse ${show ? "show" : ""}`}>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Service</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <button class="btn btn-outline-success" type="submit">LogIn</button>
+                        <button class="btn btn-outline-success" type="submit">SignUp</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+    </>
+  )
+}
+
+export default Navbar
+    -->
+
+    step2)navbar styling and header section 
+    final navbar code:
+    <!--
+        import React, { useState } from 'react'
+
+const Navbar = () => {
+
+    const [show,setShow] = useState(false)
+
+  return (
+    <>
+    <section className="navbar-bg">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">Shubhaam.com</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class={`collapse navbar-collapse ${show ? "show" : ""}`}>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Service</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <button class="btn btn-style" type="submit">LogIn</button>
+                        <button class="btn btn-style" type="submit">SignUp</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+    </>
+  )
+}
+
+export default Navbar
+    -->
+
+    from index.css 
+    <!--
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #fff;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+}
+    -->
+
+    now creating the Header section with file name Header.js 
+    now making the skeleton of hero section 
+    from Header.js 
+    <!--
+        import React from 'react'
+
+const Header = () => {
+  return (
+    <>
+        <header>
+            <section className="container main-hero-container">
+                <div className="row">
+                    <div className="col-12 col-lg-6 header-left-side d-flex  justify-content-center flex-column align-items-start">
+                        <h1 className="display-2">
+                            Welcome To My Portfolio Page
+                        </h1>
+                        <p className='main-hero-para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, sed sunt totam voluptate aliquid obcaecati debitis accusantium blanditiis, quod corrupti porro consequatur voluptas ea repellendus? Est illo corporis reprehenderit sit delectus eligendi facere alias, non excepturi, maiores quasi deserunt eaque!</p>
+                        <h3>Get Early access for you</h3>
+
+                        <div className="input-group mt-3">
+                            <input type="text" className='rounded-pill w-75 me-3 p-2 form-control-text' />
+                            <div className="input-group-text">Hire Now!</div>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-lg-6 header-right-side d-flex  justify-content-center align-items-center">
+                        <img src="./images/hero1.png" className='img-fluid' alt="homeimg1" />
+                        <img src="./images/hero4.png" className='img-fluid' alt="homeimg4" />
+                    </div>
+                </div>
+            </section>
+        </header>
+    </>
+  )
+}
+
+export default Header
+    -->
+
+    Now header section css styling and floating section 
+    final code
+    from Header.js 
+    <!--
+      import React from 'react'
+
+const Header = () => {
+  return (
+    <>
+        <header>
+            <section className="container main-hero-container">
+                <div className="row">
+                    <div className="col-12 col-lg-6 header-left-side d-flex  justify-content-center flex-column align-items-start">
+                        <h1 className="display-2">
+                            Welcome To My Portfolio Page
+                        </h1>
+                        <p className='main-hero-para'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, sed sunt totam voluptate aliquid obcaecati debitis accusantium blanditiis, quod corrupti porro consequatur voluptas ea repellendus? Est illo corporis reprehenderit sit delectus eligendi facere alias, non excepturi, maiores quasi deserunt eaque!</p>
+                        <h3>Get Early access for you</h3>
+
+                        <div className="input-group mt-3">
+                            <input type="text" className='rounded-pill w-75 me-3 p-2 form-control-text' placeholder='Enter Your Email...'/>
+                            <div className="input-group-button">Hire Now!</div>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-lg-6 header-right-side d-flex  justify-content-center align-items-center main-hero-dection-img">
+                        <img src="./images/post-4.png" className='img-fluid' alt="homeimg4" />
+                        <img src="./images/post-2.jpg" className='img-fluid main-hero-img2' alt="homeimg1" />
+                    </div>
+                    
+                </div>
+            </section>
+        </header>
+    </>
+  )
+}
+
+export default Header
+    -->
+
+    from index.css 
+    <!--
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #000000;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+header{
+  background-color: var(--bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container{
+  height: 80vh;
+  display: flex;
+}
+
+.main-hero-container h1{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.main-hero-para{
+  font-size: 1.6em;
+  color: var(--text);
+  margin: 3rem 0 5rem 0;
+  width: 75%;font-weight: lighter;
+}
+
+.main-hero-container h3{
+  font-weight: lighter;
+}
+
+.main-hero-dection-img{
+  position: relative;
+}
+
+.main-hero-dection-img img{
+  width: 90%;
+  height: 55%;
+  margin-top: 10rem;
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-hero-dection-img .main-hero-img2{
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 70%;
+  top: -5%;
+}
+
+.input-group{
+  position: relative !important;
+}
+
+.form-control-text{
+  position: absolute;
+  height: 5rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem !important;
+  font-size: 1.5rem;
+}
+
+.input-group-button{
+  position: absolute;
+  right: 27.5%;
+  color: #fff;
+  background-color: var(--pri);
+  top: 0.5rem;
+  height: 40px;
+  width: 15%;
+  border-radius: 20px !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+}
+    -->
+
+    now making of howdoesitwork section 
+    we are going to make that with the help of api 
+    for thgat make an component folder in that we have to make an How does it work.js file and impoort that in app.js 
+    noe make an api foldert and in that workapi.js file 
+    making of an api :
+    <!--
+      const workapi = [
+    {
+        id:1,
+        logo:"fas fa-download",
+        title:"Download App",
+        info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus molestiae itaque, aliquam nesciunt voluptate exercitationem, impedit necessitatibus ad hic vero sit. Dolorum quas, rem veritatis sequi, mollitia corrupti quos aliquid similique, fugiat iure ex at amet modi totam incidunt ut animi magni ullam quia aut corporis! Eum, voluptatum recusandae!",
+    },
+    {
+        id:2,
+        logo:"fas fa-chalkboard-teacher",
+        title:"Complete the Instruction",
+        info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus molestiae itaque, aliquam nesciunt voluptate exercitationem, impedit necessitatibus ad hic vero sit. Dolorum quas, rem veritatis sequi, mollitia corrupti quos aliquid similique, fugiat iure ex at amet modi totam incidunt ut animi magni ullam quia aut corporis! Eum, voluptatum recusandae!",
+    },
+    {
+        id:3,
+        logo:"fas fa-donate",
+        title:"Receive Your Fund",
+        info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed delectus molestiae itaque, aliquam nesciunt voluptate exercitationem, impedit necessitatibus ad hic vero sit. Dolorum quas, rem veritatis sequi, mollitia corrupti quos aliquid similique, fugiat iure ex at amet modi totam incidunt ut animi magni ullam quia aut corporis! Eum, voluptatum recusandae!",
+    },
+]
+export default workapi
+    -->
+    now import that in our work section 
+    sekelton of work.js 
+    <!--
+      import React from 'react'
+
+const HowDoesItWork = () => {
+  return (
+    <>
+        <section>
+            <div className="work-container main-container">
+                <h1 className="main-heading text-center">How Does it work...?</h1>
+                <div className="row">
+                    <div className="col-12 col-lg-4 text-center work-container-subdiv">
+                        <i className="fas fa-download"></i>
+                        <h2 className='sub-heading'>Download App</h2>
+                        <p className='main-hero-para w100'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aperiam nihil, itaque voluptatum repellendus, eligendi molestiae dignissimos dolorem hic obcaecati tenetur corporis recusandae, quidem excepturi accusantium atque. Voluptatum tempora qui, beatae ipsam molestiae ab fugiat et molestias ea magni culpa.</p>
+                    </div>
+
+                    <div className="col-12 col-lg-4 text-center work-container-subdiv">
+                        <i className="fas fa-download"></i>
+                        <h2 className='sub-heading'>Download App</h2>
+                        <p className='main-hero-para w100'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aperiam nihil, itaque voluptatum repellendus, eligendi molestiae dignissimos dolorem hic obcaecati tenetur corporis recusandae, quidem excepturi accusantium atque. Voluptatum tempora qui, beatae ipsam molestiae ab fugiat et molestias ea magni culpa.</p>
+                    </div>
+
+                    <div className="col-12 col-lg-4 text-center work-container-subdiv">
+                        <i className="fas fa-download"></i>
+                        <h2 className='sub-heading'>Download App</h2>
+                        <p className='main-hero-para w100'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos aperiam nihil, itaque voluptatum repellendus, eligendi molestiae dignissimos dolorem hic obcaecati tenetur corporis recusandae, quidem excepturi accusantium atque. Voluptatum tempora qui, beatae ipsam molestiae ab fugiat et molestias ea magni culpa.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default HowDoesItWork
+    -->
+
+
+    sincewe have to repeat our code we can use api for that 
+    as we konow we have crate an api we just have to use that 
+    first import workapi and then 
+    <!--
+      import React, { useState } from 'react'
+import workapi from '../api/WorkApi'
+
+const HowDoesItWork = () => {
+
+    const [workData,setWorkData] = useState(workapi)
+    console.log(workData)
+
+  return (
+    <>
+        <section>
+            <div className="work-container main-container">
+                <h1 className="main-heading text-center">How Does it work...?</h1>
+                <div className="row">
+
+                    {
+                        workData.map((currElement) => {
+                            const {id,logo,title,info} = currElement;
+                            return (
+                                <>
+                                    <div className="col-12 col-lg-4 text-center work-container-subdiv">
+                                        <i className={`fontawesome-style ${logo}`}></i>
+                                        <h2 className='sub-heading'>{title}</h2>
+                                        <p className='main-hero-para w100'>{info}</p>
+                                    </div>
+                                </>
+                            )
+                        })
+                    }
+
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default HowDoesItWork
+    -->
+
+    now working on css fil
+    now from Howdoesitwork.js 
+    <!--
+      import React, { useState } from 'react'
+import workapi from '../api/WorkApi'
+
+const HowDoesItWork = () => {
+
+    const [workData,setWorkData] = useState(workapi)
+    console.log(workData)
+
+  return (
+    <>
+        <section>
+            <div className="work-container container">
+                <h1 className="main-heading text-center">How Does it work...?</h1>
+                <div className="row">
+
+                    {
+                        workData.map((currElement) => {
+                            const {id,logo,title,info} = currElement;
+                            return (
+                                <>
+                                    <div className="col-12 col-lg-4 text-center work-container-subdiv">
+                                        <i className={`fontawesome-style ${logo}`}></i>
+                                        <h2 className='sub-heading'>{title}</h2>
+                                        <p className='main-hero-para w-100'>{info}</p>
+                                    </div>
+                                </>
+                            )
+                        })
+                    }
+
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default HowDoesItWork
+    -->
+    from index.css 
+    <!--
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #000000;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+header{
+  background-color: var(--bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container{
+  height: 80vh;
+  display: flex;
+}
+
+.main-hero-container h1{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.main-hero-para{
+  font-size: 1.6em;
+  color: var(--text);
+  margin: 3rem 0 5rem 0;
+  width: 75%;font-weight: lighter;
+}
+
+.main-hero-container h3{
+  font-weight: lighter;
+}
+
+.main-hero-dection-img{
+  position: relative;
+}
+
+.main-hero-dection-img img{
+  width: 90%;
+  height: 55%;
+  margin-top: 10rem;
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-hero-dection-img .main-hero-img2{
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 70%;
+  top: -5%;
+}
+
+.input-group{
+  position: relative !important;
+}
+
+.form-control-text{
+  position: absolute;
+  height: 5rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem !important;
+  font-size: 1.5rem;
+}
+
+.input-group-button{
+  position: absolute;
+  right: 27.5%;
+  color: #fff;
+  background-color: var(--pri);
+  top: 0.5rem;
+  height: 40px;
+  width: 15%;
+  border-radius: 20px !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.work-container{
+  width: 80vw;
+  padding: 5rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.1);
+  margin-top: -10rem;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.work-container .main-heading{
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+.work-container .work-container-subdiv{
+  padding: 0 5rem;
+}
+
+.work-container .sub-heading{
+  font-size: 2rem;
+}
+
+.fontawesome-style{
+  font-size: 2.5rem;
+  color: #000;
+  width: 6rem;
+  height: 6rem;
+  background: #f1f5fd;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+}
+    -->
+
+    step6)making of about us section 
+    create About.js and import that in app.js 
+    also we can do that with the help of api 
+    Aboutapi.js 
+    <!--
+      const Aboutapi = [
+    {
+        id:1,
+        title:"Sign In",
+        info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur asperiores neque veniam quaerat praesentium dolore aperiam ipsa obcaecati sint possimus.",
+    },
+    {
+        id:2,
+        title:"Add your bank Account",
+        info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur asperiores neque veniam quaerat praesentium dolore aperiam ipsa obcaecati sint possimus.",
+    },
+    {
+        id:3,
+        title:"Send payment request",
+        info:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur asperiores neque veniam quaerat praesentium dolore aperiam ipsa obcaecati sint possimus.",
+    },
+]
+export default Aboutapi
+    -->
+
+    from About.js 
+    <!--
+      import React, { useState } from 'react'
+import Aboutapi from '../api/Aboutapi'
+
+const About = () => {
+
+    const [about,setAbout] = useState(Aboutapi)
+    console.log(Aboutapi)
+
+  return (
+    <>
+        <section className="common-section our-services">
+            <div className="container mb-5">
+                <div className="row">
+
+                    <div className="col-12 col-lg-5 text-center our-service-leftside-img">
+                        <img src="./images/post-2.jpg" alt="aboutimg" />
+                    </div>
+
+                    <div className="col-12 col-lg-7 our-services-list">
+                        <h3 className="mini-title">-- Available only on GooglePlay and IOS app store</h3>
+                        <h1 className="main-heading">How to use the App...?</h1>
+
+                        {
+                            about.map((currElement) => {
+                                const {id,title,info} = currElement;
+                                return(
+                                    <>
+                                        <div className="row our-services-info" key={id}>
+                                            <div className="col-1 our-services-number">{id}</div>
+                                            <div className="col-10 our-services-data">
+                                                <h2>{title}</h2>
+                                                <p className="main-hero-para">{info}</p>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
+
+                        <br />
+                        <button className="btn-style btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section className="common-section our-services">
+            <div className="container mb-5">
+                <div className="row">
+
+                    <div className="col-12 col-lg-7 our-services-list">
+                        <h3 className="mini-title">-- Support in any Language</h3>
+                        <h1 className="main-heading">World class support sysytemis avilable 24/7</h1>
+
+                        {
+                            about.map((currElement) => {
+                                const {id,title,info} = currElement;
+                                return(
+                                    <>
+                                        <div className="row our-services-info" key={id}>
+                                            <div className="col-1 our-services-number">{id}</div>
+                                            <div className="col-10 our-services-data">
+                                                <h2>{title}</h2>
+                                                <p className="main-hero-para">{info}</p>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
+
+                        <br />
+                        <button className="btn-style btn">Learn More</button>
+                    </div>
+
+                    <div className="col-12 col-lg-5 text-center our-service-rightside-img">
+                        <img src="./images/post-7.jpg" alt="aboutimg" />
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default About
+    -->
+
+    from index.css 
+    <!--
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #000000;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+header{
+  background-color: var(--bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container{
+  height: 80vh;
+  display: flex;
+}
+
+.main-hero-container h1{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.main-hero-para{
+  font-size: 1.6em;
+  color: var(--text);
+  margin: 3rem 0 5rem 0;
+  width: 75%;font-weight: lighter;
+}
+
+.main-hero-container h3{
+  font-weight: lighter;
+}
+
+.main-hero-dection-img{
+  position: relative;
+}
+
+.main-hero-dection-img img{
+  width: 90%;
+  height: 55%;
+  margin-top: 10rem;
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-hero-dection-img .main-hero-img2{
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 70%;
+  top: -5%;
+}
+
+.input-group{
+  position: relative !important;
+}
+
+.form-control-text{
+  position: absolute;
+  height: 5rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem !important;
+  font-size: 1.5rem;
+}
+
+.input-group-button{
+  position: absolute;
+  right: 27.5%;
+  color: #fff;
+  background-color: var(--pri);
+  top: 0.5rem;
+  height: 40px;
+  width: 15%;
+  border-radius: 20px !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.work-container{
+  width: 80vw;
+  padding: 3rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.1);
+  margin-top: -10rem;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.work-container .main-heading{
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+.work-container .work-container-subdiv{
+  padding: 0 5rem;
+}
+
+.work-container .sub-heading{
+  font-size: 2rem;
+}
+
+.fontawesome-style{
+  font-size: 2.5rem;
+  color: #000;
+  width: 6rem;
+  height: 6rem;
+  background: #f1f5fd;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.our-services img{
+  width: 80%;
+  margin-top: 10rem;
+  border-radius: 10px;
+}
+
+.our-services .mini-title{
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 3rem 0;
+  text-align: left;
+  font-size: 20px;
+}
+
+.our-services-info{
+  margin-top: 4rem;
+}
+
+.our-services .our-services-number{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.our-services-data{
+  padding-left: 2rem;
+}
+
+.our-services-data p{
+  margin: 0.5rem 0;
+}
+
+.common-section{
+  margin: 5rem 0;
+}
+
+
+
+
+
+
+
+
+
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+}
+    -->
+
+    step7)our services section and making of it 
+    make Service.js and import that in app.js 
+    first we have to make an api Serviceapi.js and import it
+    <!--
+      const Serviceapi = [
+    {
+        id:1,
+        logo:"fas fa-download",
+        title:"Register for free",
+        info:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus perferendis quas excepturi ipsum quos amet ea, nesciunt eos facilis veniam voluptas impedit iure? Fugiat, voluptatum.",
+    },
+    {
+        id:2,
+        logo:"fas fa-user-check",
+        title:"Verify your Identiy",
+        info:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus perferendis quas excepturi ipsum quos amet ea, nesciunt eos facilis veniam voluptas impedit iure? Fugiat, voluptatum.",
+    },
+    {
+        id:3,
+        logo:"fas fa-money-check-alt",
+        title:"Add recipient's bank details",
+        info:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus perferendis quas excepturi ipsum quos amet ea, nesciunt eos facilis veniam voluptas impedit iure? Fugiat, voluptatum.",
+    },
+    {
+        id:4,
+        logo:"fas fa-amazon-pay",
+        title:"Pay for your Transfer",
+        info:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus perferendis quas excepturi ipsum quos amet ea, nesciunt eos facilis veniam voluptas impedit iure? Fugiat, voluptatum.",
+    },
+    {
+        id:5,
+        logo:"fas fa-hand-holding-usd",
+        title:"Choose an amount to send",
+        info:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus perferendis quas excepturi ipsum quos amet ea, nesciunt eos facilis veniam voluptas impedit iure? Fugiat, voluptatum.",
+    },
+    {
+        id:6,
+        logo:"fas fa-globe",
+        title:"That's it",
+        info:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus perferendis quas excepturi ipsum quos amet ea, nesciunt eos facilis veniam voluptas impedit iure? Fugiat, voluptatum.",
+    },
+]
+export default Serviceapi
+    -->
+
+    from Service.js 
+    <!--
+      import React, { useState } from 'react'
+import Serviceapi from '../api/Serviceapi'
+
+const Service = () => {
+
+    const [service,setService] = useState(Serviceapi)
+    console.log(Serviceapi)
+
+  return (
+    <>
+        <section className="service-main-container">
+            <div className="container service-container">
+                <h1 className="main-heading text-center fw-bold">Our Services</h1>
+
+                <div className="row">
+                    {
+                        service.map((currElement) => {
+                            const {id,logo,title,info} = currElement;
+                            return (
+                                <>
+                                    <div className="col-11 col-lg-4 col-xxl-4 work-container-subdiv-service" key={id}>
+                                        <i className={`fontawesome-style ${logo}`}></i>
+                                        <h2 className="sub-heading">{title}</h2>
+                                        <p className='main-hero-para'>{info}</p>
+                                    </div>
+                                </>
+                            )
+                        })
+                    }
+                    
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default Service
+    -->
+
+    from index.css 
+    <!--
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #000000;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+header{
+  background-color: var(--bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container{
+  height: 80vh;
+  display: flex;
+}
+
+.main-hero-container h1{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.main-hero-para{
+  font-size: 1.6em;
+  color: var(--text);
+  margin: 3rem 0 5rem 0;
+  width: 75%;font-weight: lighter;
+}
+
+.main-hero-container h3{
+  font-weight: lighter;
+}
+
+.main-hero-dection-img{
+  position: relative;
+}
+
+.main-hero-dection-img img{
+  width: 90%;
+  height: 55%;
+  margin-top: 10rem;
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-hero-dection-img .main-hero-img2{
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 70%;
+  top: -5%;
+}
+
+.input-group{
+  position: relative !important;
+}
+
+.form-control-text{
+  position: absolute;
+  height: 5rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem !important;
+  font-size: 1.5rem;
+}
+
+.input-group-button{
+  position: absolute;
+  right: 27.5%;
+  color: #fff;
+  background-color: var(--pri);
+  top: 0.5rem;
+  height: 40px;
+  width: 15%;
+  border-radius: 20px !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.work-container{
+  width: 80vw;
+  padding: 3rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.1);
+  margin-top: -10rem;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.work-container .main-heading{
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+.work-container .work-container-subdiv{
+  padding: 0 5rem;
+}
+
+.work-container .sub-heading{
+  font-size: 2rem;
+}
+
+.fontawesome-style{
+  font-size: 2.5rem;
+  color: #000;
+  width: 6rem;
+  height: 6rem;
+  background: #f1f5fd;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.our-services img{
+  width: 80%;
+  margin-top: 10rem;
+  border-radius: 10px;
+}
+
+.our-services .mini-title{
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 3rem 0;
+  text-align: left;
+  font-size: 20px;
+}
+
+.our-services-info{
+  margin-top: 4rem;
+}
+
+.our-services .our-services-number{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.our-services-data{
+  padding-left: 2rem;
+}
+
+.our-services-data p{
+  margin: 0.5rem 0;
+}
+
+.common-section{
+  margin: 5rem 0;
+}
+
+.service-main-container{
+  margin-top: 5rem;
+  padding: 5rem 0;
+}
+
+.service-main-container .main-heading{
+  margin: 3rem 0;
+}
+
+.work-container-subdiv-service{
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.15);
+  display: grid;
+  place-items: center;
+}
+
+.work-container-subdiv-service:hover{
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.main-heading{
+  font-size: 4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+
+  .service-container .col-xxl-4{
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: auto;
+  }
+}
+
+@media(min-width:992px){
+  .service-container .col-lg-4{
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: 2.5rem auto;
+  }
+}
+    -->
+    step9)contact us page creation 
+    make Contact.js and import that in app.js 
+    from contact.js 
+    <!--
+      import React from 'react'
+
+const Contact = () => {
+  return (
+    <>
+        <section className="contactus-section">
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-lg-10 mx-auto">
+                        <div className="row">
+
+                            <div className="contactus-leftside col-12 col-lg-5">
+                                <h1>Connect With Me</h1>
+                                <p className="main-hero-para">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro perferendis asperiores dolorum temporibus, officia eligendi.
+                                </p>
+                                <figure><img src="./images/post-5.png" className='img-fluid' alt="contactimg" /></figure>
+                            </div>
+
+                            <div className="contact-rightside col-12 col-lg-7">
+                                <form action="" method="post">
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="text" className='form-control' placeholder='First Name' />
+                                            </div>
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="text" className='form-control'  placeholder='Last Name' />
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="email" className='form-control' placeholder='Email ID' />
+                                            </div>
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="phone" className='form-control'  placeholder='Phone Number' />
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <input type="text" className='form-control contact'  placeholder='Add Address' />
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <input type="text" className='form-control contact'  placeholder='Enter your message' />
+                                            </div>
+                                        </div>
+
+                                        <div className="form-check">
+                                            <input type="checkbox" id="flexCheckChecked" className="form-check-input" />
+                                            <label htmlFor="flexCheckChecked" className="form-check-label main-hero-para">Term's and Conditions</label>
+                                        </div>
+
+                                        <button type='submit' className='btn btn-style w-100'>Submit</button>
+
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default Contact
+    -->
+
+    .index.css 
+    <!--
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #000000;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+header{
+  background-color: var(--bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container{
+  height: 80vh;
+  display: flex;
+}
+
+.main-hero-container h1{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.main-hero-para{
+  font-size: 1.6em;
+  color: var(--text);
+  margin: 3rem 0 5rem 0;
+  width: 75%;font-weight: lighter;
+}
+
+.main-hero-container h3{
+  font-weight: lighter;
+}
+
+.main-hero-dection-img{
+  position: relative;
+}
+
+.main-hero-dection-img img{
+  width: 90%;
+  height: 55%;
+  margin-top: 10rem;
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-hero-dection-img .main-hero-img2{
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 70%;
+  top: -5%;
+}
+
+.input-group{
+  position: relative !important;
+}
+
+.form-control-text{
+  position: absolute;
+  height: 5rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem !important;
+  font-size: 1.5rem;
+}
+
+.input-group-button{
+  position: absolute;
+  right: 27.5%;
+  color: #fff;
+  background-color: var(--pri);
+  top: 0.5rem;
+  height: 40px;
+  width: 15%;
+  border-radius: 20px !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.work-container{
+  width: 80vw;
+  padding: 3rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.1);
+  margin-top: -10rem;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.work-container .main-heading{
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+.work-container .work-container-subdiv{
+  padding: 0 5rem;
+}
+
+.work-container .sub-heading{
+  font-size: 2rem;
+}
+
+.fontawesome-style{
+  font-size: 2.5rem;
+  color: #000;
+  width: 6rem;
+  height: 6rem;
+  background: #f1f5fd;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.our-services img{
+  width: 80%;
+  margin-top: 10rem;
+  border-radius: 10px;
+}
+
+.our-services .mini-title{
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 3rem 0;
+  text-align: left;
+  font-size: 20px;
+}
+
+.our-services-info{
+  margin-top: 4rem;
+}
+
+.our-services .our-services-number{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.our-services-data{
+  padding-left: 2rem;
+}
+
+.our-services-data p{
+  margin: 0.5rem 0;
+}
+
+.common-section{
+  margin: 5rem 0;
+}
+
+.service-main-container{
+  margin-top: 5rem;
+  padding: 5rem 0;
+}
+
+.service-main-container .main-heading{
+  margin: 3rem 0;
+}
+
+.work-container-subdiv-service{
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.15);
+  display: grid;
+  place-items: center;
+}
+
+.work-container-subdiv-service:hover{
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.main-heading{
+  font-size: 4rem;
+}
+
+
+.contactus-section{
+  margin: 10rem 0;
+}
+
+.contactus-leftside img{
+  min-width: 80%;
+  max-height: 30rem;
+  height: auto;
+}
+
+.contact{
+  margin-bottom: 3rem;
+}
+
+.form-control{
+  height: 5rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  font-weight: lighter;
+}
+
+.form-check-input{
+  width: 2rem;
+  height: 2rem;
+}
+
+.contactus-rightside form .main-hero-para{
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: lighter;
+  width: 75%;
+}
+
+
+
+
+
+
+
+
+
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+
+  .service-container .col-xxl-4{
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: auto;
+  }
+}
+
+@media(min-width:992px){
+  .service-container .col-lg-4{
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: 2.5rem auto;
+  }
+}
+    -->
+
+
+    step9)footer section design 
+    from footer.js 
+    <!--
+      import React from 'react'
+
+const Footer = () => {
+  return (
+    <>
+        <footer>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-lg-10 mx-auto">
+                        <div className="row">
+
+                            <div className="col-6 col-lg-3">
+                                <h2>Company Name</h2>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="col-6 col-lg-3">
+                                <h2>Support Us</h2>
+                                <ul>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="col-6 col-lg-3">
+                                <h2>Service</h2>
+                                <ul>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                    <li><a href="">About Us</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="col-6 col-lg-3">
+                                <h2>Follow Us</h2>
+                                <div className="row">
+                                    <div className="col-3 mx-auto">
+                                        <a href=""><i className="fab fa-instagram fontawesome-style"></i></a>
+                                    </div>
+                                    <div className="col-3 mx-auto">
+                                        <a href=""><i className="fab fa-facebook fontawesome-style"></i></a>
+                                    </div>
+                                    <div className="col-3 mx-auto">
+                                        <a href=""><i className="fab fa-youtube fontawesome-style"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div className="mt-5 ">
+                            <p className="main-hero-para text-center copyright w-100">Copyright @ 2023 Shubhaaam.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </>
+  )
+}
+
+export default Footer
+    -->
+
+    from index.css 
+    <!--
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: cursive;
+}
+
+:root{
+  --bg:#f1f5fd;
+  --pri:#6f5de7;
+  --text:#828286;
+  --main:#333;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: #000000;
+}
+
+.navbar-bg{
+  background-color: var(--bg);
+  padding: 2rem 0;
+  z-index: 99;
+  position: relative;
+}
+
+.navbar-brand{
+  font-size: 3rem;
+}
+
+.navbar li{
+  padding: 0rem 2rem;
+}
+
+.navbar li a{
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+.navbar li a:hover{
+  color: #000;
+}
+
+.btn-style{
+  width: 12rem;
+  height: 4rem;
+  border-radius: 10px;
+  background-color: var(--pri);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.btn-style:first-child{
+  margin-right: 20px;
+}
+
+header{
+  background-color: var(--bg);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-hero-container{
+  height: 80vh;
+  display: flex;
+}
+
+.main-hero-container h1{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.main-hero-para{
+  font-size: 1.6em;
+  color: var(--text);
+  margin: 3rem 0 5rem 0;
+  width: 75%;font-weight: lighter;
+}
+
+.main-hero-container h3{
+  font-weight: lighter;
+}
+
+.main-hero-dection-img{
+  position: relative;
+}
+
+.main-hero-dection-img img{
+  width: 90%;
+  height: 55%;
+  margin-top: 10rem;
+  border-radius: 1.5rem;
+  position: absolute;
+}
+
+.main-hero-dection-img .main-hero-img2{
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  left: 70%;
+  top: -5%;
+}
+
+.input-group{
+  position: relative !important;
+}
+
+.form-control-text{
+  position: absolute;
+  height: 5rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem !important;
+  font-size: 1.5rem;
+}
+
+.input-group-button{
+  position: absolute;
+  right: 27.5%;
+  color: #fff;
+  background-color: var(--pri);
+  top: 0.5rem;
+  height: 40px;
+  width: 15%;
+  border-radius: 20px !important;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.work-container{
+  width: 80vw;
+  padding: 3rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.1);
+  margin-top: -10rem;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.work-container .main-heading{
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+.work-container .work-container-subdiv{
+  padding: 0 5rem;
+}
+
+.work-container .sub-heading{
+  font-size: 2rem;
+}
+
+.fontawesome-style{
+  font-size: 2.5rem;
+  color: #000;
+  width: 6rem;
+  height: 6rem;
+  background: #f1f5fd;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.our-services img{
+  width: 80%;
+  margin-top: 10rem;
+  border-radius: 10px;
+}
+
+.our-services .mini-title{
+  text-transform: uppercase;
+  font-weight: normal;
+  margin: 3rem 0;
+  text-align: left;
+  font-size: 20px;
+}
+
+.our-services-info{
+  margin-top: 4rem;
+}
+
+.our-services .our-services-number{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.our-services-data{
+  padding-left: 2rem;
+}
+
+.our-services-data p{
+  margin: 0.5rem 0;
+}
+
+.common-section{
+  margin: 5rem 0;
+}
+
+.service-main-container{
+  margin-top: 5rem;
+  padding: 5rem 0;
+}
+
+.service-main-container .main-heading{
+  margin: 3rem 0;
+}
+
+.work-container-subdiv-service{
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.15);
+  display: grid;
+  place-items: center;
+}
+
+.work-container-subdiv-service:hover{
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+.main-heading{
+  font-size: 4rem;
+}
+
+
+.contactus-section{
+  margin: 10rem 0;
+}
+
+.contactus-leftside img{
+  min-width: 80%;
+  max-height: 30rem;
+  height: auto;
+}
+
+.contact{
+  margin-bottom: 3rem;
+}
+
+.form-control{
+  height: 5rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  font-weight: lighter;
+}
+
+.form-check-input{
+  width: 2rem;
+  height: 2rem;
+}
+
+.contactus-rightside form .main-hero-para{
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: lighter;
+  width: 75%;
+}
+
+footer{
+  padding: 5rem 0;
+  background: var(--pri);
+  color: #fff;
+}
+
+footer h2{
+  color: #000;
+  font-size: 2.5rem;
+  font-weight: bold
+}
+
+
+footer li{
+  list-style: none;
+  font-size: 1.5rem;
+  font-weight: normal;
+  cursor: pointer;
+  margin-top: 1rem ;
+  color: #fff;
+}
+
+footer .copyright{
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+@media(min-width:1500px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1500px !important;
+  }
+}
+
+@media(min-width:1400px){
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl{
+    max-width: 1400px !important;
+  }
+
+  .service-container .col-xxl-4{
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: auto;
+  }
+}
+
+@media(min-width:992px){
+  .service-container .col-lg-4{
+    flex: 0 0 auto;
+    width: 30% !important;
+    margin: 2.5rem auto;
+  }
+}
+    -->
+
+   step10)website url partwith the help of react router dom ie page for each section ie home,about,service,contact us page 
+   npm i react-router-dom
+   from index.js 
+   <!--
+    import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import {BrowserRouter} from "react-router-dom"
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+);
+
+   -->
+
+   make a file Home.js and in that paste all your app.js code and import only home in app.js 
+   <!--
+    import React from 'react'
+// import Navbar from './component/Navbar'
+// import Header from "./component/Header"
+// import HowDoesItWork from './component/HowDoesItWork'
+// import About from './component/About'
+// import Service from './component/Service'
+// import Contact from './component/Contact'
+// import Footer from './component/Footer'
+import Home from './Home'
+
+const App = () => {
+  return (
+    <>
+        <Home/>
+    </>
+  )
+}
+
+export default App
+   -->
+
+   from home.js 
+   <!--
+    import React from 'react'
+import Navbar from './component/Navbar'
+import Header from "./component/Header"
+import HowDoesItWork from './component/HowDoesItWork'
+import About from './component/About'
+import Service from './component/Service'
+import Contact from './component/Contact'
+import Footer from './component/Footer'
+
+const Home = () => {
+  return (
+    <>
+        <Navbar/>
+        <Header/>
+        <HowDoesItWork/>
+        <About/>
+        <Service/>
+        <Contact/>
+        <Footer/>
+    </>
+  )
+}
+
+export default Home
+   -->
+
+   now create a folder in src called pages 
+   in that make home, about,service,contact,error pages
+   from App.js 
+   <!--
+import React from 'react'
+// import Navbar from './component/Navbar'
+// import Header from "./component/Header"
+// import HowDoesItWork from './component/HowDoesItWork'
+// import About from './component/About'
+// import Service from './component/Service'
+// import Contact from './component/Contact'
+// import Footer from './component/Footer'
+import Home from './Home'
+import {Route, Routes} from "react-router-dom"
+import Aboutus from './pages/Aboutus'
+import Sericeus from './pages/Sericeus'
+import Contactus from './pages/Contactus'
+import Error from './pages/Error'
+
+const App = () => {
+  return (
+    <>
+        <Routes>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route path='/about' element={<Aboutus />}></Route>
+          <Route path='/service' element={<Sericeus />}></Route>
+          <Route path='/contact' element={<Contactus />}></Route>
+          <Route path='/error' element={<Error />}></Route>
+        </Routes>
+
+    </>
+  )
+}
+
+export default App
+   -->
+
+   since the page refresh we have to add navlink in navbar.js 
+   <!--
+    import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+
+const Navbar = () => {
+
+    const [show,setShow] = useState(false)
+
+  return (
+    <>
+    <section className="navbar-bg">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">Shubhaam.com</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={() => setShow(!show)}>
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class={`collapse navbar-collapse ${show ? "show" : ""}`}>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                        <NavLink class="nav-link active" aria-current="page" to="/">Home</NavLink>
+                        </li>
+                        <li class="nav-item">
+                        <NavLink class="nav-link" to="/about">About</NavLink>
+                        </li>
+                        <li class="nav-item">
+                        <NavLink class="nav-link" to="/service">Service</NavLink>
+                        </li>
+                        <li class="nav-item">
+                        <NavLink class="nav-link" to="/contact">Contact Us</NavLink>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <button class="btn btn-style" type="submit">LogIn</button>
+                        <button class="btn btn-style" type="submit">SignUp</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+    </>
+  )
+}
+
+export default Navbar
+   -->
+
+   desgining od service page
+   <!--
+    import React from 'react'
+import Navbar from '../component/Navbar'
+import Service from '../component/Service'
+import Footer from '../component/Footer'
+
+const Sericeus = () => {
+  return (
+    <>
+      <Navbar/>
+      <Service/>
+      <Footer/>
+    </>
+  )
+}
+
+export default Sericeus
+   -->
+
+   import about.js 
+   <!--
+    import React from 'react'
+import About from '../component/About'
+import Navbar from '../component/Navbar'
+import Footer from '../component/Footer'
+
+const Aboutus = () => {
+  return (
+    <>
+      <Navbar/>
+      <About/>
+      <Footer/>
+    </>
+  )
+}
+
+export default Aboutus
+   -->
+
+   import contact us page 
+   <!--
+    import React from 'react'
+import Contact from '../component/Contact'
+import Navbar from '../component/Navbar'
+import Footer from '../component/Footer'
+
+const Contactus = () => {
+  return (
+    <>
+      <Navbar/>
+      <Contact/>
+      <Footer/>
+    </>
+  )
+}
+
+export default Contactus
+   -->
+  
+   now making of an error page 
+   <!--
+    import React from 'react'
+import Footer from '../component/Footer'
+import Navbar from '../component/Navbar'
+import { NavLink } from 'react-router-dom'
+
+const Error = () => {
+  return (
+    <>
+    <Navbar/>
+
+      <div className='notfound'>
+        <img className='error' src="https://img.freepik.com/free-vector/400-error-bad-request-concept-illustration_114360-1921.jpg?w=2000" alt="error page" />
+      </div>
+
+      <div error-btn="container error-btn">
+        <NavLink className="row" to="/">
+          <button className='btn-style btn'>Home</button>
+        </NavLink>
+      </div>
+
+    <Footer/>
+    </>
+  )
+}
+
+export default Error
+   -->
+
+   from APP.js 
+   <!--
+    import React from 'react'
+// import Navbar from './component/Navbar'
+// import Header from "./component/Header"
+// import HowDoesItWork from './component/HowDoesItWork'
+// import About from './component/About'
+// import Service from './component/Service'
+// import Contact from './component/Contact'
+// import Footer from './component/Footer'
+import Home from './Home'
+import {Route, Routes} from "react-router-dom"
+import Aboutus from './pages/Aboutus'
+import Sericeus from './pages/Sericeus'
+import Contactus from './pages/Contactus'
+import Error from './pages/Error'
+
+const App = () => {
+  return (
+    <>
+        <Routes>
+          <Route exact path='/' element={<Home />}></Route>
+          <Route path='/about' element={<Aboutus />}></Route>
+          <Route path='/service' element={<Sericeus />}></Route>
+          <Route path='/contact' element={<Contactus />}></Route>
+          <Route path="*" element={<Error />}></Route>
+        </Routes>
+
+    </>
+  )
+}
+
+export default App
+   -->
+
+   step10)adding firebase and realtime database to our form with the help of firebase
+   we will add firebase pn contact form and we will get form data 
+   go to firebase then in firebase conosle make a project after that go to
+   go to build and in that realtime database section and create a dtasbase with  test 
+   copy that link and after that this code 
+   <!--
+    import React,{useState} from 'react'
+
+const Contact = () => {
+
+    const [userData, setUserData] = useState({
+        firstName:"",
+        lastName: "",
+        email:"",
+        phoneNumber:"",
+        address:"",
+        message:""
+    })
+
+    let name,value;
+    const postUserData = (event) => {
+        name = event.target.name;
+        value = event.target.value;
+
+        setUserData({...userData, [name]:value})
+    }
+
+    //connecting with the firebase 
+    const submitData = async (event) => {
+        event.preventDefault();
+        const {firstName, lastName,email,phoneNumber,address,message} =  userData;
+
+        if(firstName && lastName && email && phoneNumber && address && message){
+
+        
+
+            const res = await fetch("https://portfolio-website-34097-default-rtdb.firebaseio.com/userDataRecords.json",
+                {method :"POST",
+                headers: {
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify({
+                    firstName, lastName,email,phoneNumber,address,message
+                })
+            }
+            );
+
+            if(res){
+                setUserData({
+                    firstName:"",
+                    lastName: "",
+                    email:"",
+                    phoneNumber:"",
+                    address:"",
+                    message:"",
+                })
+                alert("Success")
+            }
+            else{
+                alert("Fill the Details Properly...")
+            }
+        }
+        else{
+            alert("Fill the Details Properly...")
+        }
+    }
+
+  return (
+    <>
+        <section className="contactus-section">
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-lg-10 mx-auto">
+                        <div className="row">
+
+                            <div className="contactus-leftside col-12 col-lg-5">
+                                <h1>Connect With Me</h1>
+                                <p className="main-hero-para">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro perferendis asperiores dolorum temporibus, officia eligendi.
+                                </p>
+                                <figure><img src="./images/post-5.png" className='img-fluid' alt="contactimg" /></figure>
+                            </div>
+
+                            <div className="contact-rightside col-12 col-lg-7">
+                                <form method="post">
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="text" className='form-control' placeholder='First Name' name="firstName" value={userData.firstName} onChange={postUserData}/>
+                                            </div>
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="text" className='form-control'  placeholder='Last Name' name="lastName" value={userData.lastName} onChange={postUserData}/>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="email" className='form-control' placeholder='Email ID' name="email" value={userData.email} onChange={postUserData}/>
+                                            </div>
+                                            <div className="col-12 col-lg-6 contact">
+                                                <input type="phone" className='form-control'  placeholder='Phone Number' name="phoneNumber" value={userData.phoneNumber} onChange={postUserData}/>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <input type="text" className='form-control contact'  placeholder='Add Address' name="address" value={userData.address} onChange={postUserData}/>
+                                            </div>
+                                        </div>
+
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <input type="text" className='form-control contact'  placeholder='Enter your message' name="message" value={userData.message} onChange={postUserData}/>
+                                            </div>
+                                        </div>
+
+                                        <div className="form-check">
+                                            <input type="checkbox" id="flexCheckChecked" className="form-check-input" />
+                                            <label htmlFor="flexCheckChecked" className="form-check-label main-hero-para">Term's and Conditions</label>
+                                        </div>
+
+                                        <button type='submit' className='btn btn-style w-100' onClick={submitData}>Submit</button>
+
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </>
+  )
+}
+
+export default Contact
+   -->
+   and we get our data 
+
+   step11)making of media queries and making it responsive 
+   make ity according to your need 
+
+   step12)hosting this for free on firebase 
+   first install firebase cli 
+   go on root folder ie main folder by cd.. 
+   then: npm i install -g firebase-tools
+   login in firebase website 
+   now we have to login it in v also for that :firebase login 
+   then initialiing by :firebase init
+   then yes 
+   then we have to configure  Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys have to click with the help of space 
+   then ue existing project then folder name and click on your project name nad then 
+   then after thate type build to build app : build
+   thne type yes for configure nad no for github 
+   now npm run build 
+   now deploy by typing : firebase deploy --only hosting
+
+   now we get hosting url : https://portfolio-website-34097.web.app
+    
+   In this I have uploaded How to make an React + Firebase Website and also how to host it for free...
+For ref visit : https://portfolio-website-34097.web.app
+
+
+    
+
+</body>
+</html>
